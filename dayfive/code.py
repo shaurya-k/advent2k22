@@ -10,8 +10,10 @@ def one():
     seven = ['s', 'b', 'm', 'v', 'l', 'r', 'j']
     eight = ['j', 'p', 'd']
     nine = ['v', 'w', 'n', 'c', 'd']
-    index = ['', one, two, three, four, five, six, seven, eight, nine]
-    for line in lines:
+    lists = ['', one, two, three, four, five, six, seven, eight, nine]
+    for index, line in enumerate(lines):
+        if index <= 9:
+            continue
         line = line.strip()
         both = line.split(" ")
         num = int(both[1])
@@ -20,11 +22,11 @@ def one():
 
         a = 0
         while a < num:
-            index[end].insert(0, index[start].pop(0))
+            lists[end].insert(0, lists[start].pop(0))
             a += 1
 
     ans = ''
-    for ind in index:
+    for ind in lists:
         if len(ind) > 0:
             ans += ind[0]
 
@@ -43,21 +45,23 @@ def two():
     seven = ['s', 'b', 'm', 'v', 'l', 'r', 'j']
     eight = ['j', 'p', 'd']
     nine = ['v', 'w', 'n', 'c', 'd']
-    index = ['', one, two, three, four, five, six, seven, eight, nine]
-    for line in lines:
+    lists = ['', one, two, three, four, five, six, seven, eight, nine]
+    for index, line in enumerate(lines):
+        if index <= 9:
+            continue
         line = line.strip()
         both = line.split(" ")
         num = int(both[1])
         start = int(both[3])
         end = int(both[5])
 
-        remove = index[start][:num]  # crates being moved
-        index[start] = index[start][num:]  # crates that stay
-        remove.extend(index[end])  # adding crates to new box
-        index[end] = remove  # reassign
+        remove = lists[start][:num]  # crates being moved
+        lists[start] = lists[start][num:]  # crates that stay
+        remove.extend(lists[end])  # adding crates to new box
+        lists[end] = remove  # reassign
 
     ans = ''
-    for ind in index:
+    for ind in lists:
         if len(ind) > 0:
             ans += ind[0]
 
