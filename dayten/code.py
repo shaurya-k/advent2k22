@@ -59,7 +59,7 @@ def display(image):
     for row in range(6):
         start = row * 40
         end = start + 40
-        print(''.join(image[start:end]))
+        print(image[start:end])
 
 
 if __name__ == '__main__':
